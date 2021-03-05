@@ -41,11 +41,15 @@ jobRole.addEventListener('change', (e) => {
 colorSelect.disabled = true;
 designSelect.addEventListener('change', (e) => {
     colorSelect.disabled = false;
+    colorOptions[0].textContent = `Please select a color`;
+    for(let i =0; i < colorOptions.length; i++){
+        colorOptions[i].hidden = false;
+    }
     for(let i = 0; i < colorOptions.length; i++){
         const designSelected = e.target.value;
         if(designSelected == colorOptions[i].getAttribute('data-theme')){
             colorOptions[i].hidden = false;
-        } else{
+        } else {
             colorOptions[i].hidden = true;
         }
     }
@@ -72,8 +76,8 @@ activitiesReg.addEventListener('change', (e) => {
                 activitiesCheck[i].disabled = false
             }
     } 
-    activitiesCost.innerHTML = `Total: $${costTotal}`;
-}})
+}   activitiesCost.innerHTML = `Total: $${costTotal}`;
+})
 
 
 
@@ -218,7 +222,7 @@ const cVVValidator = () => {
     if(cvvValidator === false){
         cvv.parentNode.classList.add('not-valid');
         cvv.parentNode.classList.remove('valid');
-        zipCode.parentNode.lastElementChild.style.display = 'block';
+        cvv.parentNode.lastElementChild.style.display = 'block';
         return false
     } else {
         cvv.parentNode.classList.add('valid');
