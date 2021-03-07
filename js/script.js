@@ -41,11 +41,7 @@ jobRole.addEventListener('change', (e) => {
 colorSelect.disabled = true;
 designSelect.addEventListener('change', (e) => {
     colorSelect.disabled = false;
-    colorOptions[0].textContent = `Please select a color`;
-    for(let i =0; i < colorOptions.length; i++){
-        colorOptions[i].hidden = false;
-    }
-    for(let i = 0; i < colorOptions.length; i++){
+    for(let i = 1; i < colorOptions.length; i++){
         const designSelected = e.target.value;
         if(designSelected == colorOptions[i].getAttribute('data-theme')){
             colorOptions[i].hidden = false;
@@ -53,6 +49,8 @@ designSelect.addEventListener('change', (e) => {
             colorOptions[i].hidden = true;
         }
     }
+    colorSelect.selectedIndex = 0;
+    colorOptions[0].textContent = `Please select a color`;
 })
 
 // Register for Activities
